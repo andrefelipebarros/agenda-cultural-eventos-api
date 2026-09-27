@@ -1,0 +1,82 @@
+### Health - API principal
+GET http://127.0.0.1:8000/health
+
+### Health - API de inscrições
+GET http://127.0.0.1:8001/health
+
+### Cadastrar evento
+POST http://127.0.0.1:8000/eventos
+Content-Type: application/json
+
+{
+  "titulo": "Festival Cultural do Rio",
+  "descricao": "Evento cultural com música, gastronomia e apresentações.",
+  "cidade": "Rio de Janeiro",
+  "local": "Praça Mauá",
+  "data_evento": "2026-10-10",
+  "capacidade": 500
+}
+
+### Listar eventos
+GET http://127.0.0.1:8000/eventos
+
+### Buscar evento por ID
+GET http://127.0.0.1:8000/eventos/1
+
+### Atualizar evento
+PUT http://127.0.0.1:8000/eventos/1
+Content-Type: application/json
+
+{
+  "titulo": "Festival Cultural do Rio 2026",
+  "descricao": "Evento cultural com música, gastronomia e apresentações artísticas.",
+  "cidade": "Rio de Janeiro",
+  "local": "Praça Mauá",
+  "data_evento": "2026-10-10",
+  "capacidade": 600
+}
+
+### Consultar clima do evento - API externa Open-Meteo
+GET http://127.0.0.1:8000/eventos/1/clima
+
+### Cadastrar inscrição
+POST http://127.0.0.1:8001/inscricoes
+Content-Type: application/json
+
+{
+  "evento_id": 1,
+  "nome": "Marina Souza",
+  "email": "marina@email.com",
+  "telefone": "21999999999",
+  "confirmada": true
+}
+
+### Listar inscrições
+GET http://127.0.0.1:8001/inscricoes
+
+### Buscar inscrição por ID
+GET http://127.0.0.1:8001/inscricoes/1
+
+### Listar inscrições do evento
+GET http://127.0.0.1:8001/inscricoes/evento/1
+
+### Atualizar inscrição
+PUT http://127.0.0.1:8001/inscricoes/1
+Content-Type: application/json
+
+{
+  "evento_id": 1,
+  "nome": "Marina Souza",
+  "email": "marina@email.com",
+  "telefone": "21988888888",
+  "confirmada": true
+}
+
+### Consultar inscrições pela API principal - integração entre componentes
+GET http://127.0.0.1:8000/eventos/1/inscricoes
+
+### Remover inscrição
+DELETE http://127.0.0.1:8001/inscricoes/1
+
+### Remover evento
+DELETE http://127.0.0.1:8000/eventos/1

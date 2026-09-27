@@ -1,0 +1,20 @@
+services:
+  inscricoes-api:
+    build:
+      context: ../inscricoes-api
+    ports:
+      - "8001:8001"
+    volumes:
+      - ../inscricoes-api/data:/app/data
+
+  eventos-api:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    environment:
+      INSCRICOES_API_URL: http://inscricoes-api:8001
+    depends_on:
+      - inscricoes-api
+    volumes:
+      - ./data:/app/data
